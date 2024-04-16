@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/carListFragment">
+
+    <fragment
+        android:id="@+id/studentListFragment"
+        android:name="com.example.advweek4.view.StudentListFragment"
+        android:label="fragment_student_list"
+        tools:layout="@layout/fragment_student_list" >
+        <action
+            android:id="@+id/actionStudentDetail"
+            app:destination="@id/studentDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/studentDetailFragment"
+        android:name="com.example.advweek4.view.StudentDetailFragment"
+        android:label="fragment_student_detail"
+        tools:layout="@layout/fragment_student_detail" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="override fun onViewCreated(view: View, savedInstanceState: Bundle?) {&#xA;    super.onViewCreated(view, savedInstanceState)&#xA;&#xA;    binding = FragmentStudentListBinding.bind(view) // Inisialisasi binding di sini&#xA;&#xA;    binding.refreshLayout.setOnRefreshListener {&#xA;        binding.recView.visibility = View.GONE&#xA;        binding.textError.visibility = View.GONE&#xA;        binding.progressLoad.visibility = View.VISIBLE&#xA;        studentListViewModel.refresh()&#xA;        binding.refreshLayout.isRefreshing = false&#xA;    }&#xA;&#xA;    observeViewModel()&#xA;}" />
+    <fragment
+        android:id="@+id/carListFragment"
+        android:name="com.example.advweek4.view.CarListFragment"
+        android:label="CarListFragment" />
+</navigation>
